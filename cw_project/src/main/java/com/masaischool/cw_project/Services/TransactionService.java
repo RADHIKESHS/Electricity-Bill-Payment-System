@@ -3,9 +3,10 @@ package com.masaischool.cw_project.Services;
 import java.util.List;
 
 import com.masaischool.cw_project.Entitys.Transaction;
+import com.masaischool.cw_project.Exceptions.BillNotFoundException;
+import com.masaischool.cw_project.Exceptions.SomethingWentWrongException;
 
 public interface TransactionService {
-    Transaction createTransaction(int consumerId, int billId, double transactionAmount);
-    List<Transaction> getTransactionsByConsumer(int consumerId);
+	Transaction createTransaction(Long consumerId, int billId, double transactionAmount) throws ClassNotFoundException, SomethingWentWrongException, BillNotFoundException;
 }
 

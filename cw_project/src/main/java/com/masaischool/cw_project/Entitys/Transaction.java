@@ -39,13 +39,20 @@ public class Transaction {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Transaction(Bill bill, LocalDateTime transactionDate, double transactionAmount, boolean isDeleted) {
+	public Transaction(Bill bill, double transactionAmount, boolean isDeleted) {
 		super();
 		this.bill = bill;
-		this.transactionDate = transactionDate;
+		this.transactionDate = LocalDateTime.now();
 		this.transactionAmount = transactionAmount;
 		this.isDeleted = isDeleted;
 	}
+	
+//	public Transaction(Bill bill, double transactionAmount) {
+//		super();
+//		this.bill = bill;
+//		this.transactionDate = LocalDateTime.now();
+//		this.transactionAmount = transactionAmount;
+//	}
 
 	public Long getId() {
 		return id;

@@ -1,6 +1,6 @@
 package com.masaischool.cw_project.Entitys;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,11 +28,14 @@ public class Complaint {
     private Consumer consumer;
     
     @Column(name = "complaint_date")
-    private Date complaintDate;
+    private LocalDateTime complaintDate;
     
     @Column(name = "complaint_description")
     private String complaintDescription;
-
+    
+    @Column(name = "complaint_types")
+    private String complaintTypes;
+    
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ComplaintStatus status;
@@ -45,14 +48,23 @@ public class Complaint {
     	// TODO Auto-generated constructor stub
     }
       
-    public Complaint(Consumer consumer, Date complaintDate, String complaintDescription,
-			ComplaintStatus status, boolean isDeleted) {
+    public Complaint(Consumer consumer,String complaintDescription,String complaintTypes,ComplaintStatus status, boolean isDeleted) {
 		super();
 		this.consumer = consumer;
-		this.complaintDate = complaintDate;
+		this.complaintDate = LocalDateTime.now();
 		this.complaintDescription = complaintDescription;
+		this.complaintTypes = complaintTypes;
 		this.status = status;
 		this.isDeleted = isDeleted;
+	}
+    
+    public Complaint(Consumer consumer,String complaintDescription,String complaintTypes ) {
+		super();
+		this.consumer = consumer;
+		this.complaintDate = LocalDateTime.now();
+		this.complaintDescription = complaintDescription;
+		this.status = ComplaintStatus.PENDING;
+		this.complaintTypes = complaintTypes;
 	}
 
     
@@ -72,13 +84,6 @@ public class Complaint {
 		this.consumer = consumer;
 	}
 
-	public Date getComplaintDate() {
-		return complaintDate;
-	}
-
-	public void setComplaintDate(Date complaintDate) {
-		this.complaintDate = complaintDate;
-	}
 
 	public String getComplaintDescription() {
 		return complaintDescription;
@@ -104,14 +109,28 @@ public class Complaint {
 		this.isDeleted = isDeleted;
 	}
 
+
+
+	public String getComplaintTypes() {
+		return complaintTypes;
+	}
+
+	public void setComplaintTypes(String complaintTypes) {
+		this.complaintTypes = complaintTypes;
+	}
+
+	public void setComplaintDate(LocalDateTime complaintDate) {
+		this.complaintDate = complaintDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Complaint [id=" + id + ", consumer=" + consumer + ", complaintDate=" + complaintDate
-				+ ", complaintDescription=" + complaintDescription + ", status=" + status + ", isDeleted=" + isDeleted
-				+ "]";
+				+ ", complaintDescription=" + complaintDescription + ", complaintTypes=" + complaintTypes + ", status="
+				+ status + ", isDeleted=" + isDeleted + "]";
 	}
 
-	enum ComplaintStatus {
+	public enum ComplaintStatus {
     	PENDING,
     	IN_PROGRESS,
     	RESOLVED
