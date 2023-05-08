@@ -15,147 +15,167 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "bill")
 public class Bill {
-    
+
+    public enum Status {
+        PENDING,
+        PARTIALLY_PAID,
+        PAID,
+        OVERDUE,
+        CANCELLED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bill_id")
     private Long id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "consumer_id", referencedColumnName = "consumer_id")
     private Consumer consumer;
-    
+
     @Column(name = "bill_month")
     private LocalDate billMonth;
-    
+
     @Column(name = "fixed_charge")
     private double fixedCharge;
-    
+
     @Column(name = "units_consumed")
     private int unitsConsumed;
-    
+
     @Column(name = "taxes")
     private double taxes;
-    
+
     @Column(name = "adjustment")
     private double adjustment;
-    
+
     @Column(name = "total_bill")
     private double totalBill;
-    
+
+    @Column(name = "paid_amount")
+    private double paidAmount;
+
     @Column(name = "status")
-    private String status;
-    
+    private Status status;
+
     @Column(name = "is_deleted")
     private boolean isDeleted = false;
 
-	public Bill() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public Bill() {
+        super();
+    }
 
-	public Bill(Consumer consumer, LocalDate billMonth, double fixedCharge, int unitsConsumed, double taxes,
-			double adjustment, double totalBill, String status, boolean isDeleted) {
-		super();
-		this.consumer = consumer;
-		this.billMonth = billMonth;
-		this.fixedCharge = fixedCharge;
-		this.unitsConsumed = unitsConsumed;
-		this.taxes = taxes;
-		this.adjustment = adjustment;
-		this.totalBill = totalBill;
-		this.status = status;
-		this.isDeleted = isDeleted;
-	}
+    public Bill(Consumer consumer, LocalDate billMonth, double fixedCharge, int unitsConsumed, double taxes,
+                double adjustment, double totalBill, double paidAmount, Status status, boolean isDeleted) {
+        super();
+        this.consumer = consumer;
+        this.billMonth = billMonth;
+        this.fixedCharge = fixedCharge;
+        this.unitsConsumed = unitsConsumed;
+        this.taxes = taxes;
+        this.adjustment = adjustment;
+        this.totalBill = totalBill;
+        this.paidAmount = paidAmount;
+        this.status = status;
+        this.isDeleted = isDeleted;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Consumer getConsumer() {
-		return consumer;
-	}
+    public Consumer getConsumer() {
+        return consumer;
+    }
 
-	public void setConsumer(Consumer consumer) {
-		this.consumer = consumer;
-	}
+    public void setConsumer(Consumer consumer) {
+        this.consumer = consumer;
+    }
 
-	public LocalDate getBillMonth() {
-		return billMonth;
-	}
+    public LocalDate getBillMonth() {
+        return billMonth;
+    }
 
-	public void setBillMonth(LocalDate billMonth) {
-		this.billMonth = billMonth;
-	}
+    public void setBillMonth(LocalDate billMonth) {
+        this.billMonth = billMonth;
+    }
 
-	public double getFixedCharge() {
-		return fixedCharge;
-	}
+    public double getFixedCharge() {
+        return fixedCharge;
+    }
 
-	public void setFixedCharge(double fixedCharge) {
-		this.fixedCharge = fixedCharge;
-	}
+    public void setFixedCharge(double fixedCharge) {
+        this.fixedCharge = fixedCharge;
+    }
 
-	public int getUnitsConsumed() {
-		return unitsConsumed;
-	}
+    public int getUnitsConsumed() {
+        return unitsConsumed;
+    }
 
-	public void setUnitsConsumed(int unitsConsumed) {
-		this.unitsConsumed = unitsConsumed;
-	}
+    public void setUnitsConsumed(int unitsConsumed) {
+        this.unitsConsumed = unitsConsumed;
+    }
 
-	public double getTaxes() {
-		return taxes;
-	}
+    public double getTaxes() {
+        return taxes;
+    }
 
-	public void setTaxes(double taxes) {
-		this.taxes = taxes;
-	}
+    public void setTaxes(double taxes) {
+        this.taxes = taxes;
+    }
 
-	public double getAdjustment() {
-		return adjustment;
-	}
+    public double getAdjustment() {
+        return adjustment;
+    }
 
-	public void setAdjustment(double adjustment) {
-		this.adjustment = adjustment;
-	}
+    public void setAdjustment(double adjustment) {
+        this.adjustment = adjustment;
+    }
 
-	public double getTotalBill() {
-		return totalBill;
-	}
+    public double getTotalBill() {
+        return totalBill;
+    }
 
-	public void setTotalBill(double totalBill) {
-		this.totalBill = totalBill;
-	}
+    public void setTotalBill(double totalBill) {
+        this.totalBill = totalBill;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public double getPaidAmount() {
+        return paidAmount;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setPaidAmount(double paidAmount) {
+        this.paidAmount = paidAmount;
+    }
+    
+    public Status getStatus() {
+        return status;
+    }
 
-	public boolean isDeleted() {
-		return isDeleted;
-	}
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 
 	@Override
 	public String toString() {
 		return "Bill [id=" + id + ", consumer=" + consumer + ", billMonth=" + billMonth + ", fixedCharge=" + fixedCharge
 				+ ", unitsConsumed=" + unitsConsumed + ", taxes=" + taxes + ", adjustment=" + adjustment
-				+ ", totalBill=" + totalBill + ", status=" + status + ", isDeleted=" + isDeleted + "]";
+				+ ", totalBill=" + totalBill + ", paidAmount=" + paidAmount + ", status=" + status + ", isDeleted="
+				+ isDeleted + "]";
 	}
     
-	
     
+	
 }
 
