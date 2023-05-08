@@ -67,7 +67,95 @@ public class Bill {
 		this.status = status;
 		this.isDeleted = isDeleted;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Consumer getConsumer() {
+		return consumer;
+	}
+
+	public void setConsumer(Consumer consumer) {
+		this.consumer = consumer;
+	}
+
+	public LocalDate getBillMonth() {
+		return billMonth;
+	}
+
+	public void setBillMonth(LocalDate billMonth) {
+		this.billMonth = billMonth;
+	}
+
+	public double getFixedCharge() {
+		return fixedCharge;
+	}
+
+	public void setFixedCharge(double fixedCharge) {
+		this.fixedCharge = fixedCharge;
+	}
+
+	public int getUnitsConsumed() {
+		return unitsConsumed;
+	}
+
+	public void setUnitsConsumed(int unitsConsumed) {
+		this.unitsConsumed = unitsConsumed;
+	}
+
+	public double getTaxes() {
+		return taxes;
+	}
+
+	public void setTaxes(double taxes) {
+		this.taxes = taxes;
+	}
+
+	public double getAdjustment() {
+		return adjustment;
+	}
+
+	public void setAdjustment(double adjustment) {
+		this.adjustment = adjustment;
+	}
+
+	public double getTotalBill() {
+		return totalBill;
+	}
+
+	public void setTotalBill(double totalBill) {
+		this.totalBill = totalBill;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public boolean isDeleted() {
+		return isDeleted;
+	}
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	@Override
+	public String toString() {
+		return "Bill [id=" + id + ", consumer=" + consumer + ", billMonth=" + billMonth + ", fixedCharge=" + fixedCharge
+				+ ", unitsConsumed=" + unitsConsumed + ", taxes=" + taxes + ", adjustment=" + adjustment
+				+ ", totalBill=" + totalBill + ", status=" + status + ", isDeleted=" + isDeleted + "]";
+	}
     
+	
     
 }
 
