@@ -1,7 +1,7 @@
 # dainty-knee-9326
 
 # Consumer Management System
-The Consumer Management System is a Java-based application that allows both consumers and administrators to manage various aspects of the billing and complaint processes. The system includes two main interfaces: the Consumer UI and the Admin UI.
+The Consumer Management System is a Java-based application that allows both consumers and administrators to manage various aspects of the billing and complaint processes. The system includes two interfaces: the Consumer UI and the Admin UI.
 
 # Consumer UI
 The Consumer UI is designed for individual consumers to manage their accounts, view their bills, pay their bills, and file complaints. The system includes the following functionalities for consumers:
@@ -10,13 +10,13 @@ The Consumer UI is designed for individual consumers to manage their accounts, v
 
 **Log In:** Once the consumer has an account, they can log in by providing their username and password.
 
-**View Profile:** The consumer can view and update their profile information, including personal details and billing information.
+**View Profile:** The consumer can view their profile information, including personal details.
 
 **View Bills:** The consumer can view their bills and see details such as total amount due, due date, and payment status.
 
-**Pay Bill:** The consumer can pay their bills online by providing payment details such as credit card number and expiration date.
+**Pay Bill:** The consumer can pay their bills.
 
-**File Complaint:** The consumer can file a complaint if they encounter any issues with their account, billing, or payment.
+**File Complaint:** The consumer can file a complaint if they encounter any issues with their Connection, billing, payment, or Any others.
 
 # Admin UI
 **The Admin UI is designed for system administrators to manage consumer accounts, bills, and complaints. The system includes the following functionalities for admins:**
@@ -29,11 +29,11 @@ The Consumer UI is designed for individual consumers to manage their accounts, v
 
 **View Paid and Pending Bills:** The admin can view a list of paid and pending bills separately.
 
-**Create Bill:** The admin can create a new bill for a consumer by providing the consumer ID and bill details such as units consumed and total amount due.
+**Create Bill:** The admin can create a new bill for a consumer by providing the consumer ID and bill details such as units consumed and total amount due if there is already a pending bill of a consumer then its redirect update previous bill.
 
 **View Complaints:** The admin can view a list of all complaints filed by consumers, along with details such as consumer name, complaint type, and status.
 
-**Resolve Complaint:** The admin can resolve a complaint by updating its status and providing a resolution message.
+**Resolve Complaint:** The admin can resolve a complaint by updating its status as resolved or in process.
 
 # Services
 **The Consumer Management System includes several services to manage various aspects of the billing and complaint processes. These services include:**
@@ -59,7 +59,9 @@ The Consumer UI is designed for individual consumers to manage their accounts, v
 
 # Database 
 The Consumer Management System uses a relational database to store and manage data related to consumers, bills, transactions, and complaints.
+
 The database is designed using the MySQL database management system and includes several tables to store information related to different aspects of the system.
+
 The database is hosted on a remote server and is accessed by the application through a JDBC driver.
 
 ![ER](https://github.com/RADHIKESHS/dainty-knee-9326/assets/116291105/a8eba950-b3c4-456e-96db-b2fbd3421c64)
