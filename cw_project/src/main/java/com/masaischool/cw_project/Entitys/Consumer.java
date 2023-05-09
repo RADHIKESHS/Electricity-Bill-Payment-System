@@ -282,7 +282,7 @@ public class Consumer {
 
     @Override
     public String toString() {
-        return "Consumer{" +
+        return "Consumer " +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -290,9 +290,7 @@ public class Consumer {
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", isDeleted=" + isDeleted +
-                '}';
+                ", email='" + email + '\'' ;
     }
 }
 

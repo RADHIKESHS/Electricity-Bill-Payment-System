@@ -125,9 +125,9 @@ public class Complaint {
 
 	@Override
 	public String toString() {
-		return "Complaint [id=" + id + ", consumer=" + consumer + ", complaintDate=" + complaintDate
+		return "Complaint id=" + id + ", ConsumerID=" + consumer.getId()+"  Consumer Name= "+consumer.getFirstName()+" "+consumer.getLastName() + ", complaintDate=" + complaintDate
 				+ ", complaintDescription=" + complaintDescription + ", complaintTypes=" + complaintTypes + ", status="
-				+ status + ", isDeleted=" + isDeleted + "]";
+				+ status ;
 	}
 
 	public enum ComplaintStatus {

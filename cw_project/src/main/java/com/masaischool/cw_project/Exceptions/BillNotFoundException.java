@@ -2,6 +2,7 @@ package com.masaischool.cw_project.Exceptions;
 
 import jakarta.persistence.NoResultException;
 
+@SuppressWarnings("serial")
 public class BillNotFoundException extends Exception {
 
 

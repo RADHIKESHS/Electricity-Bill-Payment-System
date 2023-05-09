@@ -25,7 +25,7 @@ public class BillDaoImpl implements BillDao {
 	    } catch (NoResultException e) {
 	        return null;
 	    } catch (Exception e) {
-	        throw new SomethingWentWrongException("Something went wrong while getting bills by consumer id", e);
+	        throw new SomethingWentWrongException("There is no bill with this consumerID", e);
 	    } finally {
 	        if (entityManager != null) {
 	            entityManager.close();
@@ -46,7 +46,7 @@ public class BillDaoImpl implements BillDao {
             Bill bills = (Bill) query.getSingleResult();
             return bills;
         } catch (Exception e) {
-            throw new SomethingWentWrongException("Something went wrong while getting pending bills by consumer id",e);
+            throw new SomethingWentWrongException("All bill are paid",e);
         } finally {
             if (entityManager != null) {
                 entityManager.close();
@@ -62,7 +62,7 @@ public class BillDaoImpl implements BillDao {
             Bill bill = entityManager.find(Bill.class, billId);
             return bill;
         } catch (Exception e) {
-            throw new SomethingWentWrongException("Something went wrong while getting bill by id",e);
+            throw new SomethingWentWrongException("There is no Bill with this Bill id",e);
         } finally {
             if (entityManager != null) {
                 entityManager.close();
@@ -89,8 +89,30 @@ public class BillDaoImpl implements BillDao {
             }
         }
     }
-
+    
     @Override
+    public boolean updateBill2(Bill billToUpdate) throws SomethingWentWrongException {
+        EntityManager entityManager = null;
+        try {
+            entityManager = EMUtils.getAnEntityManager();
+            entityManager.getTransaction().begin();
+            entityManager.merge(billToUpdate);
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (entityManager != null) {
+                entityManager.getTransaction().rollback();
+            }
+            throw new SomethingWentWrongException("Something went wrong while updating the bill", e);
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Bill> getAllBills() throws SomethingWentWrongException, ClassNotFoundException {
         EntityManager entityManager = null;
         try {
@@ -107,7 +129,9 @@ public class BillDaoImpl implements BillDao {
         }
     }
 
-    @Override
+    
+	@SuppressWarnings("unchecked")
+	@Override
     public List<Bill> getBillsByStatus(Status status) throws SomethingWentWrongException, ClassNotFoundException {
         EntityManager entityManager = null;
         try {
@@ -139,27 +163,6 @@ public class BillDaoImpl implements BillDao {
                 entityManager.getTransaction().rollback();
             }
             throw new SomethingWentWrongException("Something went wrong while creating a new bill", e);
-        } finally {
-            if (entityManager != null) {
-                entityManager.close();
-            }
-        }
-    }
-
-    @Override
-    public boolean updateBill2(Bill billToUpdate) throws SomethingWentWrongException {
-        EntityManager entityManager = null;
-        try {
-            entityManager = EMUtils.getAnEntityManager();
-            entityManager.getTransaction().begin();
-            entityManager.merge(billToUpdate);
-            entityManager.getTransaction().commit();
-            return true;
-        } catch (Exception e) {
-            if (entityManager != null) {
-                entityManager.getTransaction().rollback();
-            }
-            throw new SomethingWentWrongException("Something went wrong while updating the bill", e);
         } finally {
             if (entityManager != null) {
                 entityManager.close();
@@ -209,43 +212,3 @@ public class BillDaoImpl implements BillDao {
 
 }
 
-//@Override
-//public Bill getBillsByConsumer(Long consumerId) throws SomethingWentWrongException, BillNotFoundException {
-//    EntityManager entityManager = null;
-//    try {
-//        entityManager = EMUtils.getAnEntityManager();
-//        Query query = entityManager.createQuery("SELECT b FROM Bill b JOIN FETCH b.consumer c WHERE c.id = :consumerId", Bill.class);
-//        query.setParameter("consumerId", consumerId);
-//        Bill bill = (Bill) query.getSingleResult();
-//        return bill;
-//    } catch (NoResultException e) {
-//        throw new BillNotFoundException("No bills found for consumer id: " + consumerId, e);
-//    } catch (Exception e) {
-//        throw new SomethingWentWrongException("Something went wrong while getting bills by consumer id", e);
-//    } finally {
-//        if (entityManager != null) {
-//            entityManager.close();
-//        }
-//    }
-//}
-
-//@Override
-//public List<Bill> getBillsByConsumer(Long consumerId) throws SomethingWentWrongException, BillNotFoundException {
-//    EntityManager entityManager = null;
-//    try {
-//        entityManager = EMUtils.getAnEntityManager();
-//        Query query = entityManager.createQuery("SELECT b FROM Bill b JOIN FETCH b.consumer c WHERE c.id = :consumerId", Bill.class);
-//        query.setParameter("consumerId", consumerId);
-//        List<Bill> bills = query.getResultList();
-//        if (bills.isEmpty()) {
-//            throw new BillNotFoundException("No bills found for consumer id: " + consumerId);
-//        }
-//        return bills;
-//    } catch (Exception e) {
-//        throw new SomethingWentWrongException("Something went wrong while getting bills by consumer id", e);
-//    } finally {
-//        if (entityManager != null) {
-//            entityManager.close();
-//        }
-//    }
-//}

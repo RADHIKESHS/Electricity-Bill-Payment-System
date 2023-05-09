@@ -8,8 +8,6 @@ import com.masaischool.cw_project.Entitys.Transaction;
 import com.masaischool.cw_project.Exceptions.BillNotFoundException;
 import com.masaischool.cw_project.Exceptions.SomethingWentWrongException;
 
-import java.util.List;
-
 
 public class TransactionServiceImpl implements TransactionService {
 
@@ -21,7 +19,8 @@ public class TransactionServiceImpl implements TransactionService {
         billService = new BillServiceImpl();
     }
 
-    @Override
+    @SuppressWarnings("unused")
+	@Override
     public Transaction createTransaction(Long consumerId, int billId, double transactionAmount) throws ClassNotFoundException, SomethingWentWrongException, BillNotFoundException {
         Bill billToPay = billService.getBillById(billId);
         Consumer consumer = billToPay.getConsumer();

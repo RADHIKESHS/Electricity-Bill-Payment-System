@@ -1,11 +1,8 @@
 package com.masaischool.cw_project.dao;
 
-import java.util.List;
 import com.masaischool.cw_project.Entitys.Transaction;
 import com.masaischool.cw_project.Exceptions.SomethingWentWrongException;
-
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
 
 public class TransactionDaoImpl implements TransactionDao {
 
