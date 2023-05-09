@@ -26,21 +26,9 @@ public class ComplaintDaoImpl implements ComplaintDao {
         }
     }
 
-//    @Override
-//    public Complaint getComplaintsByConsumer(long consumerId) throws SomethingWentWrongException {
-//        EntityManager entityManager = EMUtils.getAnEntityManager();
-//        try {
-//            Query query = entityManager.createQuery("SELECT c FROM Complaint c WHERE c.consumerId = :consumerId and c.");
-//            query.setParameter("consumerId", consumerId);
-//            Complaint complaints = (Complaint) query.getSingleResult();
-//            return complaints;
-//        } catch (Exception e) {
-//            throw new SomethingWentWrongException("Failed to get complaints by consumer id", e);
-//        } finally {
-//            entityManager.close();
-//        }
-//    }
-    @Override
+
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Complaint> getComplaintsByConsumer(long consumerId) throws SomethingWentWrongException {
         EntityManager entityManager = EMUtils.getAnEntityManager();
         try {

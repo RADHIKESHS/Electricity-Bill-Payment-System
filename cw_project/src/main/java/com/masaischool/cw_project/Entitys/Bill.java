@@ -169,10 +169,7 @@ public class Bill {
 
 	@Override
 	public String toString() {
-		return "Bill [id=" + id + ", consumer=" + consumer + ", billMonth=" + billMonth + ", fixedCharge=" + fixedCharge
-				+ ", unitsConsumed=" + unitsConsumed + ", taxes=" + taxes + ", adjustment=" + adjustment
-				+ ", totalBill=" + totalBill + ", paidAmount=" + paidAmount + ", status=" + status + ", isDeleted="
-				+ isDeleted + "]";
+		return "Bill id=" + id + ", ConsumerID=" + consumer.getId()+",  Consumer Name= "+consumer.getFirstName()+" "+consumer.getLastName() + ", billMonth=" + billMonth + ", unitsConsumed=" + unitsConsumed + ", taxes=" + taxes + ",totalBill=" + totalBill + ", paidAmount=" + paidAmount + ", status=" + status ;
 	}
     
     

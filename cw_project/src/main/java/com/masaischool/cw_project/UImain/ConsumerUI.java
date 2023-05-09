@@ -46,7 +46,7 @@ public class ConsumerUI{
 			consumer = consumerService.createConsumer(firstName, lastName, username, password, address, mobileNumber, email);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
         System.out.println("Sign up successful. Your consumer id is " + consumer.getId());
 	}
@@ -67,7 +67,9 @@ public class ConsumerUI{
 		}
 
         if (consumer != null) {
-            System.out.println("Login successful. Welcome, " + consumer.getFirstName() + " " + consumer.getLastName());
+        	System.out.println("+-----------------------------------------------------------------------+");
+            System.out.println("|   ## Login successful ## <--   Welcome  " + consumer.getFirstName() + " " + consumer.getLastName()+"  -->");
+            System.out.println("+-----------------------------------------------------------------------+");
         } else {
             System.out.println("Invalid username or password. Please try again.");
         }
@@ -155,15 +157,18 @@ public class ConsumerUI{
         System.out.println("Complaint filed successfully. Complaint id: " + complaint.getId());
 	}
 	
-    public static void main(String[] args) throws Exception {
+    public static void consumerLogin() throws Exception {
         Scanner scanner = new Scanner(System.in);
-        boolean exit = false;
+        boolean exit = true;
 
-        while (!exit) {
-            System.out.println("Welcome to the Electricity Bill Payment System");
-            System.out.println("1. Sign Up");
-            System.out.println("2. Login");
-            System.out.println("3. Exit");
+        while (exit) {
+        	System.out.println("+-----------------------------------------------------------------------+");
+            System.out.println("|           Welcome to the Electricity Bill Payment System              |");
+        	System.out.println("+-----------------------------------------------------------------------+");
+            System.out.println("|    1. Sign Up                                                         |");
+            System.out.println("|    2. Login                                                           |");
+            System.out.println("|    3. Exit                                                            |");
+        	System.out.println("+-----------------------------------------------------------------------+");
 
             int choice = scanner.nextInt();
 
@@ -177,7 +182,8 @@ public class ConsumerUI{
                     break;
 
                 case 3:
-                    exit = true;
+                    exit = false;
+                    System.out.println("Thank you ,  See you again ");
                     break;
 
                 default:
@@ -188,11 +194,15 @@ public class ConsumerUI{
                 boolean loggedIn = true;
 
                 while (loggedIn) {
-                    System.out.println("1. View Profile");
-                    System.out.println("2. View Bills");
-                    System.out.println("3. Pay Bill");
-                    System.out.println("4. File Complaint");
-                    System.out.println("5. Logout");
+                	System.out.println("+---------------------------------------+");
+                	System.out.println("|    Enter your choice:                 |");
+                	System.out.println("+---------------------------------------+");
+                    System.out.println("|    1. View Profile                    |");
+                    System.out.println("|    2. View Bills                      |");
+                    System.out.println("|    3. Pay Bill                        |");
+                    System.out.println("|    4. File Complaint                  |");
+                    System.out.println("|    5. Logout                          |");
+                    System.out.println("+---------------------------------------+");
 
                     int consumerChoice = scanner.nextInt();
 
@@ -214,6 +224,7 @@ public class ConsumerUI{
                             break;
                         case 5:
                             loggedIn = false;
+                            System.out.println("Thanks you , Welcome for next time ");
                             break;
                         default:
                             System.out.println("Invalid choice. Please try again.");

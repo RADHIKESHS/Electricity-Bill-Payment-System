@@ -43,12 +43,12 @@ public class BillServiceImpl implements BillService {
         if (remainingAmount == 0) {
             bill.setStatus(paid);
             billDao.updateBill(bill);
-        } else if (remainingAmount > 0 && bill.getStatus() == Status.PENDING) {
+        } else if (remainingAmount > 0 && bill.getStatus() != Status.PAID) {
             bill.setStatus(Status.PARTIALLY_PAID);
             bill.setTotalBill(remainingAmount);
             billDao.updateBill(bill);
         } else {
-            throw new SomethingWentWrongException("Invalid transaction amount or bill status.");
+            throw new SomethingWentWrongException("Bill not paid successfully");
         }
     }
 
@@ -79,6 +79,7 @@ public class BillServiceImpl implements BillService {
             if (bill.getStatus() != Status.PAID) {
                 pendingBills.add(bill);
             }
+            
         }
         return pendingBills;
     }
@@ -106,6 +107,7 @@ public class BillServiceImpl implements BillService {
         bill.setTotalBill(remainingBillAmount);
         billDao.updateBill(bill);
     }
+
 
 
 }

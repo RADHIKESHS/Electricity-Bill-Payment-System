@@ -26,7 +26,8 @@ public class ConsumerDaoImpl implements ConsumerDao {
         }
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Consumer getConsumerByUsernameAndPassword(String username, String password) throws SomethingWentWrongException {
         EntityManager entityManager = EMUtils.getAnEntityManager();
         try {
@@ -64,7 +65,8 @@ public class ConsumerDaoImpl implements ConsumerDao {
         }
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<Consumer> getAllConsumers() throws SomethingWentWrongException {
         EntityManager entityManager = EMUtils.getAnEntityManager();
         try {

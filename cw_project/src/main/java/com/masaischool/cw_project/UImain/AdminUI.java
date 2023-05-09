@@ -219,7 +219,7 @@ public class AdminUI {
     	}
     }
 
-    public static void main(String[] args) throws SomethingWentWrongException, ClassNotFoundException, BillNotFoundException {
+    public static void adminLogin() throws ClassNotFoundException, SomethingWentWrongException, BillNotFoundException {
         boolean exit = false;
         while (!exit) {
             System.out.println("Enter your login ID: ");
@@ -230,16 +230,19 @@ public class AdminUI {
                 System.out.println("Login successful");
                 int choice = 0;
                 while (choice != 9) {
-                    System.out.println("1. View Consumers");
-                    System.out.println("2. View Bills");
-                    System.out.println("3. View a Consumer's Bill");
-                    System.out.println("4. View Paid and Pending Bills");
-                    System.out.println("5. Create Bill");
-                    System.out.println("6. Update Bill");
-                    System.out.println("7. View Complaints");
-                    System.out.println("8. Update Complaint Status");
-                    System.out.println("9. Exit");
-                    System.out.print("Enter your choice: ");
+                	System.out.println("+---------------------------------------+");
+                	System.out.println("|   Enter your choice:                  |");
+                	System.out.println("+---------------------------------------+");
+                    System.out.println("|   1. View Consumers                   |");
+                    System.out.println("|   2. View Bills                       |");
+                    System.out.println("|   3. View a Consumer's Bill           |");
+                    System.out.println("|   4. View Paid and Pending Bills      |");
+                    System.out.println("|   5. Create Bill                      |");
+                    System.out.println("|   6. Update Bill                      |");
+                    System.out.println("|   7. View Complaints                  |");
+                    System.out.println("|   8. Update Complaint Status          |");
+                    System.out.println("|   9. Exit                             |");
+                    System.out.println("+---------------------------------------+");
                     choice = scanner.nextInt();
                     scanner.nextLine();
 

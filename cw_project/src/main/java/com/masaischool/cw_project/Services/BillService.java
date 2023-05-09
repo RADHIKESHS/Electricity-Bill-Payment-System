@@ -20,4 +20,3 @@ public interface BillService {
 	boolean deleteBill(Long id) throws SomethingWentWrongException, BillNotFoundException;
 	void updateBillTotalAmount(int billId, double remainingBillAmount) throws SomethingWentWrongException, BillNotFoundException, ClassNotFoundException;
 }
-
