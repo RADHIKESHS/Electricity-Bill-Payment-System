@@ -57,6 +57,13 @@ The Consumer UI is designed for individual consumers to manage their accounts, v
 
 **Complaint:** Stores information related to complaints filed by individual consumers, including type, description, and status.
 
+# Database 
+The Consumer Management System uses a relational database to store and manage data related to consumers, bills, transactions, and complaints.
+The database is designed using the MySQL database management system and includes several tables to store information related to different aspects of the system.
+The database is hosted on a remote server and is accessed by the application through a JDBC driver.
+
+![ER](https://github.com/RADHIKESHS/dainty-knee-9326/assets/116291105/a8eba950-b3c4-456e-96db-b2fbd3421c64)
+
 # Exceptions
 **The Consumer Management System includes several custom exceptions to handle errors and exceptions that may occur during runtime. These exceptions include:**
 
