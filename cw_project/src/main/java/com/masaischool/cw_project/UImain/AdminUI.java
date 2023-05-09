@@ -230,6 +230,7 @@ public class AdminUI {
                 System.out.println("Login successful");
                 int choice = 0;
                 while (choice != 9) {
+                	System.out.println();
                 	System.out.println("+---------------------------------------+");
                 	System.out.println("|   Enter your choice:                  |");
                 	System.out.println("+---------------------------------------+");

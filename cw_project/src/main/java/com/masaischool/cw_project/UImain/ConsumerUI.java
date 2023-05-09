@@ -49,10 +49,11 @@ public class ConsumerUI{
 			System.out.println(e.getMessage());
 		}
         System.out.println("Sign up successful. Your consumer id is " + consumer.getId());
+		System.out.println("Please Login Now ");
 	}
 	
 	
-	static void LogIn(Scanner scanner) {
+	static void LogIn(Scanner scanner) throws ClassNotFoundException, BillNotFoundException, SomethingWentWrongException {
         scanner.nextLine();
         System.out.print("Enter Username: ");
         String loginUsername = scanner.nextLine();
@@ -67,9 +68,52 @@ public class ConsumerUI{
 		}
 
         if (consumer != null) {
+        	System.out.println();
         	System.out.println("+-----------------------------------------------------------------------+");
             System.out.println("|   ## Login successful ## <--   Welcome  " + consumer.getFirstName() + " " + consumer.getLastName()+"  -->");
             System.out.println("+-----------------------------------------------------------------------+");
+            if (consumer != null) {
+                boolean loggedIn = true;
+
+                while (loggedIn) {
+                	System.out.println();
+                	System.out.println("+---------------------------------------+");
+                	System.out.println("|    Enter your choice:                 |");
+                	System.out.println("+---------------------------------------+");
+                    System.out.println("|    1. View Profile                    |");
+                    System.out.println("|    2. View Bills                      |");
+                    System.out.println("|    3. Pay Bill                        |");
+                    System.out.println("|    4. File Complaint                  |");
+                    System.out.println("|    5. Logout                          |");
+                    System.out.println("+---------------------------------------+");
+
+                    int consumerChoice = scanner.nextInt();
+
+                    switch (consumerChoice) {
+                        case 1:
+                        	ViewProfile();
+                            break;
+
+                        case 2:
+                        	ViewBills();
+                            break;
+
+                        case 3:
+                        	PayBill(scanner);
+                            break;
+
+                        case 4:
+                        	FileComplaint(scanner);
+                            break;
+                        case 5:
+                            loggedIn = false;
+                            System.out.println("Thanks you , Welcome for next time ");
+                            break;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
+                }
+            }
         } else {
             System.out.println("Invalid username or password. Please try again.");
         }
@@ -162,6 +206,7 @@ public class ConsumerUI{
         boolean exit = true;
 
         while (exit) {
+        	System.out.println();
         	System.out.println("+-----------------------------------------------------------------------+");
             System.out.println("|           Welcome to the Electricity Bill Payment System              |");
         	System.out.println("+-----------------------------------------------------------------------+");
@@ -185,52 +230,10 @@ public class ConsumerUI{
                     exit = false;
                     System.out.println("Thank you ,  See you again ");
                     break;
-
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
 
-            if (consumer != null) {
-                boolean loggedIn = true;
-
-                while (loggedIn) {
-                	System.out.println("+---------------------------------------+");
-                	System.out.println("|    Enter your choice:                 |");
-                	System.out.println("+---------------------------------------+");
-                    System.out.println("|    1. View Profile                    |");
-                    System.out.println("|    2. View Bills                      |");
-                    System.out.println("|    3. Pay Bill                        |");
-                    System.out.println("|    4. File Complaint                  |");
-                    System.out.println("|    5. Logout                          |");
-                    System.out.println("+---------------------------------------+");
-
-                    int consumerChoice = scanner.nextInt();
-
-                    switch (consumerChoice) {
-                        case 1:
-                        	ViewProfile();
-                            break;
-
-                        case 2:
-                        	ViewBills();
-                            break;
-
-                        case 3:
-                        	PayBill(scanner);
-                            break;
-
-                        case 4:
-                        	FileComplaint(scanner);
-                            break;
-                        case 5:
-                            loggedIn = false;
-                            System.out.println("Thanks you , Welcome for next time ");
-                            break;
-                        default:
-                            System.out.println("Invalid choice. Please try again.");
-                    }
-                }
-            }
         }
     }
 }
