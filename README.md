@@ -1,7 +1,7 @@
 # dainty-knee-9326
 
-# Consumer Management System
-The Consumer Management System is a Java-based application that allows both consumers and administrators to manage various aspects of the billing and complaint processes. The system includes two interfaces: the Consumer UI and the Admin UI.
+# Electricity Bill Payment System
+This is a Java-based application for consumers to view and pay their monthly electricity bills, and for the administrator to manage consumer accounts and bills. The system includes two interfaces: the Consumer UI and the Admin UI.
 
 # Consumer UI
 The Consumer UI is designed for individual consumers to manage their accounts, view their bills, pay their bills, and file complaints. The system includes the following functionalities for consumers:
@@ -57,15 +57,6 @@ The Consumer UI is designed for individual consumers to manage their accounts, v
 
 **Complaint:** Stores information related to complaints filed by individual consumers, including type, description, and status.
 
-# Database 
-The Consumer Management System uses a relational database to store and manage data related to consumers, bills, transactions, and complaints.
-
-The database is designed using the MySQL database management system and includes several tables to store information related to different aspects of the system.
-
-The database is hosted on a remote server and is accessed by the application through a JDBC driver.
-
-![ER](https://github.com/RADHIKESHS/dainty-knee-9326/assets/116291105/a8eba950-b3c4-456e-96db-b2fbd3421c64)
-
 # Exceptions
 **The Consumer Management System includes several custom exceptions to handle errors and exceptions that may occur during runtime. These exceptions include:**
 
@@ -78,6 +69,28 @@ The database is hosted on a remote server and is accessed by the application thr
 **ComplaintNotFoundException:** Thrown if a requested complaint is not found in the system.
 
 **InvalidDataException:** Thrown if the provided data is invalid or does not meet the system's requirements.
+
+# Technologies Used
+The application is built using the following technologies:
+
+> Java
+> 
+> MySQL
+> 
+> Hibernate
+> 
+> JPA
+> 
+> JDBC
+
+# Database 
+The Consumer Management System uses a relational database to store and manage data related to consumers, bills, transactions, and complaints.
+
+The database is designed using the MySQL database management system and includes several tables to store information related to different aspects of the system.
+
+The database is hosted on a remote server and is accessed by the application through a JDBC driver.
+
+![ER](https://github.com/RADHIKESHS/dainty-knee-9326/assets/116291105/a8eba950-b3c4-456e-96db-b2fbd3421c64)
 
 # Getting Started
 To get started with the Consumer Management System, you will need to have Java 8 or higher installed on your system. You can download Java from the official Java website.
