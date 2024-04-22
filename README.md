@@ -1,5 +1,3 @@
-# dainty-knee-9326
-
 # Electricity Bill Payment System
 This is a Java-based application for consumers to view and pay their monthly electricity bills, and for the administrator to manage consumer accounts and bills. The system includes two interfaces: the Consumer UI and the Admin UI.
 
